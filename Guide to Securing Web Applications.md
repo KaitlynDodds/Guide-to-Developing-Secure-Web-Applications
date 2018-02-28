@@ -34,7 +34,7 @@ A hacker injects code into a database query that will be executed on the databas
 A hacker injects code into a database query that will be executed on the database, takes advantage of built in NoSQL commands 
 
 
-#### _Preventing Injection Flaws_
+### _Preventing Injection Flaws_
 
 **Preventing Injection Flaws**
 	* Always validate/sanitize user data before processing 
@@ -53,3 +53,70 @@ A hacker injects code into a database query that will be executed on the databas
 	* Validate types provided by user input in MongoDB queries 
 	* Use the principle of least privilege 
 		* limit access rights for users to the bare minimum necessary for them to perform their work/tasks 
+
+
+## Cross-Site Scripting
+
+
+Occurs when a web application takes untrusted data and sends it to the web browser without proper data validation or escaping. Allows attackers to execute scripts in the victims browser, exposing sensitive data that is typically retained by the browser. 
+
+### _Common Types of XSS_
+
+**Reflected XSS:**  
+Malicious data is "reflected" back at the user by an immediate HTTP request from the victim. 
+	
+> Malicious code is executed immediately in the users browser.
+
+**Stored XSS**  
+Malicious data is stored on the server or browser and embedded in HTML pages provided later.
+	
+> Malicious code is executed after is has been stored for a period of time.
+
+
+### _Preventing XSS_
+
+**How to Prevent XSS Attacks**  
+
+* Always sanitize and validate all user input
+
+* Encode output for correct context
+
+> Prevents JavaScript from running in that context (encode and escape all ASCI characters)
+
+* Set the HTTPOnly flag on cookies
+
+> ensures cookies cant be accessed by JavaScript on the client side, thus cant be stolen by an attackers XSS
+
+* Apply encoding on both the client and server-side
+
+> mitigates DOM based XSS as well, untrusted data never leaves the clients browser 
+
+*  Set the Content-Security-Policy header 
+
+> allows developers to create whitelists for client-side resources, header ensures that the browser only renders/executes resources from the specified sources
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
