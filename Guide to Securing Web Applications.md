@@ -91,8 +91,57 @@ Malicious data is stored on the server or browser and embedded in HTML pages pro
 
 *  Set the Content-Security-Policy header 
 
-> allows developers to create whitelists for client-side resources, header ensures that the browser only renders/executes resources from the specified sources
+> allows developers to create whitelists for client-side resources, header ensures that the browser only renders/executes resources from the specified sources   
 
+
+
+## Cross Site Request Forgery  
+
+
+Forces an authenticated victim's browser to send a _forged_ HTTP request to a vulnerable web application. The vulnerable web application treats the request as legitimate, and exposes sentitive information such as session cookies and other automatically included authentication information to the attacker. 
+
+
+### _CSRF Exploitations_
+
+**State-Changing Requests**
+
+An attacker cannot view the response to any forged request. Therefore, an attacker may attempt to trick the victim into performing actions that benefit the attacker, such as changing their email address, bank account and routing numbers, transfer funds, etc. 
+
+This can be especially hazardous if the compromised user is an admin account. 
+
+**Social Engineering**
+
+Attackers often embed malicious HTML or JavaScript into an email or website that is made available to the victim. The malicious code requests a specific 'task URL' which is then executed without the user's knowledge. 
+
+### _Preventing CSRF_
+
+**CSRF Tokens**
+
+A developer can generate a token that can be added to requests that mutate state (e.g. PUT, POST, and DELETE methods). 
+
+*  The random token can be added to a hidden input field, query string, or header field.  
+
+*  CSRF middleware will check that the token matches the generated token for the request-response pair.  
+
+
+**Verify Same Origin**  
+
+A developer can examine an HTTP request header value to prevent CSRF attacks.
+
+*  Identify source origin using the **Origin Header** and **Referer Header**
+
+>  The Origin header should match the target origin, Verify the hostname in the Referer header matches the target origin
+
+*  Identify the target origin
+
+> If your web application server is directly access by its users, use the origin in the URL 
+
+
+### _Links_
+
+[OWASP CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#General_Recommendations_For_Automated_CSRF_Defense)  
+
+[Node.js CSURF](https://github.com/expressjs/csurf)
 
 
 
