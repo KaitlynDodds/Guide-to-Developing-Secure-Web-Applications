@@ -212,6 +212,48 @@ Attackers take advantage of flaws in authentication setup or session management 
 
 
 
+## Access Controls 
+
+Lack of proper security controls applied to the actions a user could take. Developers should limit admin functionality and readability permissions as well as perform checks before allowing any user to perform an action. 
+
+### _Broken Access Controls_
+
+**Indirect or direct object references**
+
+* Direct object reference occurs when a developer exposes a reference to a resource that should only be accessible to the internal application (e.g. files, directories, data and storage, keys, form parameters, etc.).  
+
+* Indirect object references occur when references to internal resources are insecure and not checked when accessed.  
+
+
+**Missing function level access controls**
+
+* Developers only verify a users access rights on the client before displaying the resource
+
+
+### _Preventing Access Control Vulnerabilities_
+
+
+**Prevent direct and indirect object reference vulnerabilities**
+
+* Check access controls and ensure resources are being protected 
+
+> Use per user or per session ids for references
+
+* All checks to ensure the correct users data is being fetched must be done on the server (not just the client) 
+
+* Expire cache information to prevent sensitive user information from being exposed 
+
+* Set correct permissions on the underlying file system
+
+**Prevent function level access control vulnerabilities**
+
+* Perform user access checks on both the server and the client
+
+> Prevents an attacker from forging a request or bypassing the check to access restricted features
+
+
+
+
 
 
 
