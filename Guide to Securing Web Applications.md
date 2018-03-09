@@ -144,10 +144,71 @@ A developer can examine an HTTP request header value to prevent CSRF attacks.
 [Node.js CSURF](https://github.com/expressjs/csurf)
 
 
+## Authentication and Session Management  
+
+Attackers take advantage of flaws in authentication setup or session management to impersonate victim users. Attackers can use these flaws to steal passwords, secret keys, and tokens used to authenticate sessions, allowing them to take over another users account.
+
+### _Broken Authentication_
+
+**Flaws in session management and authentication can occur in the following places:**
+
+* Login and logout functionality
+ 
+* Password management  
+
+* Token timeouts
+
+* Remember me functionality
+
+* Recovery questions
+
+* Account updates
+
+**Common Flaws in Session Management**
+
+* Improper timeout settings 
+ 
+> Can prevent an attacker from impersonating a user
+
+* Improperly protected session ID's or tokens
+
+> Vulnerable in the case of a man-in-the-middle attack
+
+* Unprotected passwords
+
+> Used to log in as a victim user 
 
 
+### _Preventing Authentication Exploitations_
+
+**Preventing Session Management Vulnerabilities**
+
+* User authentication credentials should be protected when stored and in transit 
+
+> Always hash user authentication credentials when stored and in transit   
+
+* Session tokens should not be exposed in the URL 
+
+* Session tokens should be timed-out after a short time, and be invalidated at logout 
+
+* Session tokens should be recreated after a successful login
+
+* Passwords, session IDs, and other authentication info should never be sent over a non-HTTPS connection 
+
+> Use HTTPOnly header to ensure your session/cookies are not accessible through JavaScript 
+
+* Don't provide more information than is necessary after a unsuccessful login attempt 
+
+> Do not indicate what authentication data was incorrect (username was incorrect, password was incorrect), simply indicate a login error  
+
+* Disable accounts after too many failed login attempts
 
 
+### _Links_
+
+[NPM Helmet Library](https://www.npmjs.com/package/helmet)  
+[Node Passport Library (Authentication)](http://www.passportjs.org/docs/authenticate/)  
+[OWASP Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet)
 
 
 
